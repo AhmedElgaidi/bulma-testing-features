@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulma Project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+</head>
+<body>
+    <nav class="navbar has-shadow is-white"role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <a href="">Test</a>
+            </div>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+        </div>
+        <div class="navbar-menu"id="navMenu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a href="">Sign Up</a>
+                </div>
+                <div class="navbar-item">
+                    <a href="">Log In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <span class="title">
+        Hello
+    </span>
+    <section class="section has-shadow">
+        <span class="has-text-justified">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ullam aliquid facilis alias possimus sunt vel recusandae pariatur distinctio impedit incidunt molestiae perferendis a maxime minus, quis cum, minima placeat!
+        </span>
+    </section>
+    <nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="#">Bulma</a></li>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Components</a></li>
+          <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
+        </ul>
+      </nav>
+      <!-- tabs -->
+      <div class="tabs is-centered has-shado">
+        <ul>
+          <li id="test1"class="is-active"data-target="test1"><a>Test 1</a></li>
+          <li id="test2"data-target="test2"><a>Test 2</a></li>
+          <li id="test3"data-target="test3"><a>Test 3</a></li>
+        </ul>
+      </div>
+      <div class="content"id="tab-content">
+        <div id="test1">
+            <h3> Test 1</h3>
+            <p>This is test 1</p>
+        </div>
+        <div id="test2"class="is-hidden">
+            <h3> Test 2</h3>
+            <p>This is test 2</p>
+        </div>
+        <div id="test3"class="is-hidden">
+            <h3> Test 3</h3>
+            <p>this is test 3</p>
+        </div>
+      </div>
+      <!-- modals -->
+      <button id="show">show model</button>
+      <div class="modal"id="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content has-background-white px-6 py-6">
+            Hello, Ahmed!
+            <div class=" has-text-right">
+                <button id="close"class="button is-small">close</button>
+            </div>
+        </div>
+      </div>
+
+
+      <!-- scripts -->
+      <script>
+          const tabs = document.querySelectorAll('.tabs li');
+          const contentBox = document.querySelectorAll('#tab-content > div');
+          tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(item => item.classList.remove('is-active'));
+                tab.classList.add('is-active');
+                //dataset get the value of whatever we add to the data-
+                const target = tab.dataset.target;
+                contentBox.forEach(box => {
+                    if(box.getAttribute('id') === target) {
+                        contentBox.forEach(item => item.classList.add('is-hidden'))
+                        box.classList.remove('is-hidden');
+                    } else {
+                        box.classList.add('is-active')
+                    }
+                });
+            });
+          });
+          //modal show/close event handelling
+          const showButton = document.getElementById('show'),
+                closeButton = document.getElementById('close'),
+                modal = document.getElementById('modal'),
+                modalbg = document.querySelector('.modal-background');
+
+                    showButton.addEventListener('click', () => {
+                        modal.classList.add('is-active');
+                    });
+                    // on clickin the button
+                    closeButton.addEventListener('click', () => {
+                        modal.classList.remove('is-active');
+                    });
+                    // on clicking out the modal box (the space)
+                    modalbg.addEventListener('click', () => {
+                        modal.classList.remove('is-active');
+                    });
+      </script>
+</body>
+</html>
